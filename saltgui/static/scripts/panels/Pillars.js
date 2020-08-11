@@ -1,6 +1,6 @@
 /* global */
 
-import {DropDownMenu} from "../DropDown.js";
+import {DropDownMenuCmd} from "../DropDownCmd.js";
 import {Panel} from "./Panel.js";
 import {Utils} from "../Utils.js";
 
@@ -55,7 +55,7 @@ export class PillarsPanel extends Panel {
       const minionTr = this.addMinion(minionId, 1);
 
       // preliminary dropdown menu
-      const menu = new DropDownMenu(minionTr, true);
+      const menu = new DropDownMenuCmd(minionTr, true);
       this._addMenuItemShowPillars(menu, minionId);
 
       minionTr.addEventListener("click", (pClickEvent) => {
@@ -99,12 +99,12 @@ export class PillarsPanel extends Panel {
     }
     minionTr.appendChild(pillarInfoTd);
 
-    const menu = new DropDownMenu(minionTr, true);
+    const menu = new DropDownMenuCmd(minionTr, true);
     this._addMenuItemShowPillars(menu, pMinionId);
   }
 
   _addMenuItemShowPillars (pMenu, pMinionId) {
-    pMenu.addMenuItem("Show pillars", () => {
+    pMenu.addMenuItemCmd("Show pillars", () => {
       this.router.goTo("pillars-minion", {"minionid": pMinionId});
     });
   }
