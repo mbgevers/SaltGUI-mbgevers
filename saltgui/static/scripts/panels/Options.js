@@ -77,7 +77,7 @@ export class OptionsPanel extends Panel {
         [
           ["doc", "doc", "none:no doc"],
           ["highstate", "saltguihighstate:SaltGUI highstate", "highstate:Normal highstate", "none:No highstate"],
-          ["output", "json", "nested", "yaml"]
+          ["output", "json", "nested", "toml", "yaml"]
         ]
       ],
       ["preview-grains", "saltgui", "(none)"],
@@ -441,6 +441,7 @@ export class OptionsPanel extends Panel {
     if (this._isSelected("output-formats", "highstate", "highstate")) value += ",highstate";
     if (this._isSelected("output-formats", "output", "json")) value += ",json";
     if (this._isSelected("output-formats", "output", "nested")) value += ",nested";
+    if (this._isSelected("output-formats", "output", "toml")) value += ",toml";
     if (this._isSelected("output-formats", "output", "yaml")) value += ",yaml";
     value = value.replace(/^,/, "");
     /* eslint-enable curly */
