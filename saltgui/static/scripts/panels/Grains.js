@@ -17,6 +17,7 @@ export class GrainsPanel extends Panel {
       "columns by configuring their name in the server-side configuration file.",
       "See README.md for more details."
     ]);
+    this.addWarningField();
     this.addTable(["Minion", "Status", "Salt version", "OS version", "Grains", "-menu-"]);
     this.setTableClickable();
 
@@ -54,6 +55,7 @@ export class GrainsPanel extends Panel {
       this._handleGrainsWheelKeyListAll(pWheelKeyListAllData);
       localGrainsItemsPromise.then((pLocalGrainsItemsData) => {
         this.updateMinions(pLocalGrainsItemsData);
+        this.removeMinionsWithoutAnswer();
         return true;
       }, (pLocalGrainsItemsMsg) => {
         const allMinionsErr = Utils.msgPerMinion(pWheelKeyListAllData.return[0].data.return.minions, JSON.stringify(pLocalGrainsItemsMsg));
